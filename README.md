@@ -1,14 +1,30 @@
-# sendgrid-nodejs-example
+# sendgridjp-nodejs-example
 
-This is an example of using the [SendGrid nodejs library](https://github.com/sendgrid/sendgrid-nodejs).
+本コードは[SendGrid公式node.jsライブラリ](https://github.com/sendgrid/sendgrid-nodejs)の利用サンプルです。
 
 ## Usage
 
 ```bash
-git clone http://github.com/scottmotte/sendgrid-nodejs-example.git
-cd sendgrid-nodejs-example
-cp .env.example .env # change the values in .env
+git clone http://github.com/sendgridjp/sendgridjp-nodejs-example.git
+cd sendgridjp-nodejs-example
+cp .env.example .env
+# .envファイルを編集してください
 npm install
 node sendgrid-nodejs-example.js
-node smtp-nodejs-example.js
 ```
+
+## .envファイルの編集
+.envファイルは以下のような内容になっています。
+
+```bash
+SENDGRID_USERNAME=your_username
+SENDGRID_PASSWORD=your_password
+TOS=you@youremail.com,friend1@friendemail.com,friend2@friendemail.com
+FROM=you@youremail.com
+```
+SENDGRID_USERNAME:SendGridのユーザ名を指定してください。  
+SENDGRID_PASSWORD:SendGridのパスワードを指定してください。  
+TOS:宛先をカンマ区切りで指定してください。  
+FROM:送信元アドレスを指定してください。  
+
+
