@@ -13,6 +13,7 @@ tos.forEach(function(to) {
   email.addTo(to);
 });
 email.setFrom(from);
+email.fromname = "送信者名";
 email.setSubject('[sendgrid-nodejs-example] フクロウのお名前はfullnameさん');
 email.setText('familyname さんは何をしていますか？\r\n 彼はplaceにいます。');
 email.setHtml('<strong> familyname さんは何をしていますか？</strong><br />彼はplaceにいます。');
