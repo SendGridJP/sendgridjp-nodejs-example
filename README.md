@@ -2,7 +2,7 @@
 
 本コードは[SendGrid公式node.jsライブラリ](https://github.com/sendgrid/sendgrid-nodejs)の利用サンプルです。
 
-## Usage
+## 使い方
 
 ```bash
 git clone http://github.com/sendgridjp/sendgridjp-nodejs-example.git
