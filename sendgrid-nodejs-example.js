@@ -22,7 +22,7 @@ email.addSubstitution('familyname', ['田中', '佐藤', '鈴木']);
 email.addSubstitution('place', ['office', 'home', 'office']);
 email.addSection({'office': '中野'});
 email.addSection({'home': '目黒'});
-email.addCategory('カテゴリ1');
+email.addCategory('category1');
 email.addHeader('X-Sent-Using', 'SendGrid-API');
 email.addFile({path: './gif.gif', filename: 'owl.gif'});
 
