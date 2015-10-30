@@ -1,8 +1,8 @@
 var dotenv = require('dotenv');
 dotenv.load();
 
-
 var api_key             = process.env.API_KEY;
+
 var from                = process.env.FROM;
 var tos                 = process.env.TOS.split(',');
 
