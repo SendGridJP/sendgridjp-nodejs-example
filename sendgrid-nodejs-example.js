@@ -1,12 +1,12 @@
 var dotenv = require('dotenv');
 dotenv.load();
 
-var sendgrid_username   = process.env.SENDGRID_USERNAME;
-var sendgrid_password   = process.env.SENDGRID_PASSWORD;
+var api_key             = process.env.API_KEY;
+
 var from                = process.env.FROM;
 var tos                 = process.env.TOS.split(',');
 
-var sendgrid   = require('sendgrid')(sendgrid_username, sendgrid_password);
+var sendgrid   = require('sendgrid')(api_key);
 var email      = new sendgrid.Email();
 
 email.setTos(tos);
