@@ -15,7 +15,7 @@ const msg = {
         {
             to: tos[0],
             substitutions: {
-                fullname: '田中　太郎',
+                fullname: '田中 太郎',
                 familyname: '田中',
                 place: '中野'
             }
@@ -23,7 +23,7 @@ const msg = {
         {
             to: tos[1],
             substitutions: {
-                fullname: '佐藤　次郎',
+                fullname: '佐藤 次郎',
                 familyname: '佐藤',
                 place: '目黒'
             }
@@ -31,7 +31,7 @@ const msg = {
         {
             to: tos[2],
             substitutions: {
-                fullname: '鈴木　三郎',
+                fullname: '鈴木 三郎',
                 familyname: '鈴木',
                 place: '中野'
             }
