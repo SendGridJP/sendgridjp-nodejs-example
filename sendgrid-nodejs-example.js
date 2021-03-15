@@ -1,7 +1,7 @@
 // .envから環境変数の読み込み
 require('dotenv').config();
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+sgMail.setApiKey(process.env.API_KEY);
 const from = process.env.FROM;
 const tos = process.env.TOS.split(',');
 
