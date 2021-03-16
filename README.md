@@ -5,7 +5,7 @@
 ## 使い方
 
 ```bash
-git clone http://github.com/sendgridjp/sendgridjp-nodejs-example.git
+git clone git@github.com:SendGridJP/sendgridjp-nodejs-example.git
 cd sendgridjp-nodejs-example
 cp .env.example .env
 # .envファイルを編集してください

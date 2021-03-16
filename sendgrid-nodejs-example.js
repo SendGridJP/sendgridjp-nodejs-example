@@ -1,30 +1,79 @@
-var dotenv = require('dotenv');
-dotenv.load();
+// .envから環境変数の読み込み
+require('dotenv').config();
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.API_KEY);
+const from = process.env.FROM;
+const tos = process.env.TOS.split(',');
 
-var api_key             = process.env.API_KEY;
+// 添付ファイルデータのBASE64エンコード
+const fs = require('fs');
+const attachment = fs.readFileSync('./gif.gif').toString('base64');
 
-var from                = process.env.FROM;
-var tos                 = process.env.TOS.split(',');
+// メッセージの構築
+const msg = {
+    personalizations: [
+        {
+            to: tos[0],
+            substitutions: {
+                fullname: '田中 太郎',
+                familyname: '田中',
+                place: '中野'
+            }
+        },
+        {
+            to: tos[1],
+            substitutions: {
+                fullname: '佐藤 次郎',
+                familyname: '佐藤',
+                place: '目黒'
+            }
+        },
+        {
+            to: tos[2],
+            substitutions: {
+                fullname: '鈴木 三郎',
+                familyname: '鈴木',
+                place: '中野'
+            }
+        }
+    ],
 
-var sendgrid   = require('sendgrid')(api_key);
-var email      = new sendgrid.Email();
+    from: {
+        email: from, // 送信元アドレス
+        name: '送信者名' // 送信者名
+    },
 
-email.setTos(tos);
-email.setFrom(from);
-email.fromname = '送信者名';
-email.setSubject('[sendgrid-nodejs-example] フクロウのお名前はfullnameさん');
-email.setText('familyname さんは何をしていますか？\r\n 彼はplaceにいます。');
-email.setHtml('<strong> familyname さんは何をしていますか？</strong><br />彼はplaceにいます。');
-email.addSubstitution('fullname', ['田中 太郎', '佐藤 次郎', '鈴木 三郎']);
-email.addSubstitution('familyname', ['田中', '佐藤', '鈴木']);
-email.addSubstitution('place', [' -office- ', ' -home- ', ' -office- ']);
-email.addSection('-office-', '中野');
-email.addSection('-home-', '目黒');
-email.addCategory('category1');
-email.addHeader('X-Sent-Using', 'SendGrid-API');
-email.addFile({path: './gif.gif', filename: 'owl.gif'});
+    subject: '[sendgrid-nodejs-example] フクロウの名前は%fullname%さん', // 件名
+    text: '%familyname%さんは何をしていますか？\n彼は%place%にいます', // textパート
+    html: '<strong>%familyname%さんは何をしていますか？</strong><br>彼は%place%にいます。', // htmlパート
+    substitutionWrappers: ['%', '%'], // 置換タグの指定
 
-sendgrid.send(email, function(err, json) {
-  if (err) { return console.error(err); }
-  console.log(json);
-});
+    // カテゴリ
+    cagtegories: 'category1',
+    // カスタムヘッダ
+    headers: {
+        'X-Sent-Using': 'SendGrid-API'
+    },
+
+    // 添付ファイル
+    attachments: [
+        {
+            content: attachment, // 添付ファイルのBASE64エンコードデータ
+            filename: 'owl.gif' // 添付ファイル名
+        }
+    ]
+};
+
+(async () => {
+    try {
+        // 送信
+        const response = await sgMail.send(msg);
+        // 結果出力
+        const obj = JSON.parse(JSON.stringify(response[0]));
+        console.log(obj.statusCode);
+        console.log(obj.body);
+        console.log(obj.headers);
+    } catch (error) {
+        console.error(error);
+    }
+})();

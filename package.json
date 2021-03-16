@@ -1,18 +1,27 @@
 {
   "name": "sendgrid-nodejs-example",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
-    "node": "0.10.x",
-    "npm": "1.2.x"
+    "node": "14.x",
+    "npm": "6.14.x"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/SendGridJP/sendgridjp-nodejs-example.git"
   },
+  "license": "MIT",
+  "keywords": [
+    "SendGrid",
+    "sendgrid",
+    "email",
+    "send",
+    "grid",
+    "node.js"
+  ],
   "main": "task.js",
-  "description": "Example script using node.js library",
+  "description": "Example script using the SendGrid node.js library",
   "dependencies": {
-    "dotenv": "0.4.0",
-    "sendgrid": "^1.9.2"
+    "@sendgrid/mail": "^7.0.0",
+    "dotenv": "^8.0.0"
   }
 }
